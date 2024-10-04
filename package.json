@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-api-app",
+  "version": "1.0.0",
+  "description": "A Node.js app using the Pokémon API with TypeScript and Axios",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "nodemon dist/bundle.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-typescript": "^7.13.0",
+    "babel-loader": "^8.2.2",
+    "ts-loader": "^9.1.2",
+    "typescript": "^4.2.3",
+    "webpack": "^5.27.2",
+    "webpack-cli": "^4.5.0",
+    "nodemon": "^2.0.7"
+  }
+}
