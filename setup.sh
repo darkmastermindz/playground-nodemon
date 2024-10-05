@@ -123,6 +123,7 @@ EOL
 # Create pokemonController.ts file
 cat <<EOL > src/controller/pokemonController.ts
 import { Request, Response, NextFunction } from 'express';
+import { AxiosResponse, AxiosError } from 'axios';
 import { fetchPokemonFromAPI } from '../service/pokemonService';
 
 // Controller to fetch Pokémon details
@@ -130,18 +131,18 @@ export function fetchPokemonController(req: Request, res: Response, next: NextFu
     const pokemonName = req.params.name;
 
     fetchPokemonFromAPI(pokemonName)
-        .then((response) => {
+        .then((response: AxiosResponse<any>) => {
             res.set({
                 'Content-Type': 'application/json',
                 'Custom-Header': 'Pokémon-API',
             });
 
-            res.status(200).json({
+            res.status(response.status).json({
                 data: response.data,
                 status: response.status
             });
         })
-        .catch((error) => {
+        .catch((error: AxiosError) => {
             if (error.response) {
                 res.status(error.response.status).json({
                     message: error.message,
@@ -156,17 +157,17 @@ EOL
 
 # Create pokemonService.ts file
 cat <<EOL > src/service/pokemonService.ts
-import axios from 'axios';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
 // Service to fetch Pokémon data from the Pokémon API
-export function fetchPokemonFromAPI(pokemonName: string) {
+export function fetchPokemonFromAPI(pokemonName: string): Promise<AxiosResponse<any>> {
     const apiUrl = \`https://pokeapi.co/api/v2/pokemon/\${pokemonName}\`;
 
     return axios.get(apiUrl)
-        .then((response) => {
+        .then((response: AxiosResponse<any>) => {
             return response;
         })
-        .catch((error) => {
+        .catch((error: AxiosError) => {
             throw error;
         });
 }
