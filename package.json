@@ -4,6 +4,7 @@
   "description": "A Node.js app using the Pokémon API with TypeScript and Axios",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
     "build": "webpack",
     "start": "nodemon dist/bundle.js"
   },
@@ -15,11 +16,18 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/axios": "^0.14.4",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
     "babel-loader": "^8.2.2",
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.7",
     "ts-loader": "^9.1.2",
     "typescript": "^4.2.3",
+    "vite": "^6.3.5",
+    "vite-plugin-node": "^5.0.1",
+    "vite-tsconfig-paths": "^5.1.4",
     "webpack": "^5.27.2",
-    "webpack-cli": "^4.5.0",
-    "nodemon": "^2.0.7"
+    "webpack-cli": "^4.5.0"
   }
 }
